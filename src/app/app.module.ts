@@ -36,7 +36,8 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './pages/home';
 import { NoContentComponent } from './pages/no-content';
 import { ShowroomComponent } from './pages/showroom';
-const components = [HomeComponent, NoContentComponent, ShowroomComponent];
+import { QuizComponent } from './pages/quiz';
+const components = [HomeComponent, NoContentComponent, ShowroomComponent, QuizComponent];
 
 import '../styles/styles.scss';
 
