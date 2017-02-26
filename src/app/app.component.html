@@ -1,7 +1,11 @@
-<a [href]="url">
-  <img [src]="logo" width="25%">
-</a>
+<div class="container my-3">
+  <a [href]="url" target="_blank">
+    <img [src]="logo" class="logo--header">
+  </a>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+</div>

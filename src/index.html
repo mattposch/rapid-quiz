@@ -18,9 +18,22 @@
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
 
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <!-- Add the slick-theme.css if you want default styling -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+
 </head>
 
 <body>
+
+<!--<div class="your-class" style="width:500px;height:400px;margin: 0 auto;">-->
+  <!--<div style="background-color: blue;">slide1</div>-->
+  <!--<div style="background-color: red">slide2</div>-->
+  <!--<div style="background-color: green">slide3</div>-->
+<!--</div>-->
+<!--<div class="buttons">-->
+<!--</div>-->
+
 
   <app>
     Loading...
@@ -36,12 +49,29 @@
     ga('create', 'UA-71073175-1', 'auto');
     ga('send', 'pageview');
   </script>
-
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
 
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('.your-class').slick({
+                             speed: 500,
+                             arrows: true,
+                             prevArrow: '<button type="button">Previous</button>',
+                             nextArrow: '<button type="button">Next</button>',
+                             appendArrows: '.buttons',
+                           });
+  });
+</script>
 
 </body>
 </html>

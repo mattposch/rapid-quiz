@@ -1,3 +1,12 @@
+body {
+  background-color: #f7f7f7;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: -40px;
+}
+
 .cf:before,
 .cf:after {
   content: " "; /* 1 */
@@ -7,7 +16,6 @@
 .cf:after {
   clear: both;
 }
-
 
 .my-3 {
   margin-top: 3em;
@@ -24,4 +32,41 @@
   border: 1px solid transparent;
   border-radius: 4px;
   border-color: #adadad;
+}
+
+
+.logo--header {
+  display: block;
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.is-right {
+  float: right;
+}
+
+
+.container {
+  max-width: 600px;
+}
+
+.panel {
+  border-radius: 2px;
+  padding: 1em;
+
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12)
+}
+
+
+.question__block {
+  margin-bottom: 20px;
+}
+
+.question__block label {
+  display: block;
+}
+
+input[type="checkbox"] {
+  margin-right: 1em;
 }
