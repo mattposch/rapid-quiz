@@ -8,12 +8,16 @@
 
   <div class="question__title question__block">
     <label>Question {{currentQuestionIndex}}</label>
-    <h3>{{appState.state.currentQuestion.text}}</h3>
+    <h3>{{currentQuestion.text}}</h3>
   </div>
 
   <div class="question__answers question__block">
-    <ul>
-      <li><label><input type="checkbox"/>{{appState.state.currentQuestion.answers}}</label></li>
-    </ul>
+    <form>
+      <ul>
+        <li *ngFor="let answer of currentQuestion.answers">
+          <label><input type="checkbox" name="answer.text" [(ngModel)]="answer.selected"/>{{answer.text}}</label>
+        </li>
+      </ul>
+    </form>
   </div>
 </div>

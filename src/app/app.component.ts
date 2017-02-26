@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
+    this.appState.set('answers', []);
     console.log('Initial App State', this.appState.state);
   }
 }

@@ -1,5 +1,3 @@
-import * as _ from 'lodash';
-
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -19,42 +17,97 @@ export class QuizComponent {
   ];
 
   public questions = [
-    { id: 1, text: 'Lorem ipsum', answers: 'answers 1'},
-    { id: 2, text: 'Lorem ipsum', answers: 'answers 2'},
-    { id: 3, text: 'Lorem ipsum', answers: 'answers 3'},
-    { id: 4, text: 'Lorem ipsum', answers: 'answers 4'},
-    { id: 5, text: 'Lorem ipsum', answers: 'answers 5'},
-    { id: 6, text: 'Lorem ipsum', answers: 'answers 6'},
-    { id: 7, text: 'Lorem ipsum', answers: 'answers 7'},
-    { id: 8, text: 'Lorem ipsum', answers: 'answers 8'},
-    { id: 9, text: 'Lorem ipsum', answers: 'answers 9'},
-    { id: 10, text: 'Lorem ipsum', answers: 'answers 10'},
+    { id: 1, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 2, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 3, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 4, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 5, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 6, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 7, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 8, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 9, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
+    { id: 10, text: 'Lorem ipsum', answers: [
+      { id: 1, text: 'Option 1'},
+      { id: 2, text: 'Option 2'},
+      { id: 3, text: 'Option 3'},
+      { id: 4, text: 'Option 4'},
+    ]},
   ];
+
+  public currentQuestion;
 
   public lastQuestionReached: boolean = false;
   public currentQuestionIndex: number = 1;
+  public currentAnswers = [];
+  public checked = false;
 
   constructor (
     public appState: AppState,
     public router: Router
   ) {
-    this.appState.set('currentQuestion', this.questions[0]);
+    this.currentQuestion = this.questions[0];
   }
 
   public next() {
+    this.appState.get('answers').push(this.currentQuestion);
+
     ++this.currentQuestionIndex;
 
     const nextQuestionIndex =
-      this.arrayObjectIndexOf(this.questions, this.appState.get('currentQuestion')) + 1;
+      this.arrayObjectIndexOf(this.questions, this.currentQuestion) + 1;
 
     if (nextQuestionIndex === this.questions.length - 1) {
       this.lastQuestionReached = true;
     }
-    this.appState.set('currentQuestion', this.questions[nextQuestionIndex]);
+    this.currentQuestion = this.questions[nextQuestionIndex];
   }
 
   public finish() {
-    console.log('quiz done');
     this.router.navigateByUrl('/result');
   }
 
